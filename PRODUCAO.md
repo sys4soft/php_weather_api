@@ -29,3 +29,5 @@ j10117181!
 
 # 003 apresentar apenas a informação que pretendemos [02]
     fazer os ajustamentos ao código para ver o resultado apenas dos dados que pretendemos
+
+# 004 vamos apresentar os dados com aspeto visual mais interessante [03]
