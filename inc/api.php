@@ -25,9 +25,17 @@ class Api
         curl_close($curl);
 
         if ($err) {
-            echo "cURL Error #:" . $err;
+            return [
+                'status' => 'error',
+                'message' => $err,
+                'data' => null
+            ];
         } else {
-            echo $response;
+            return [
+                'status' => 'success',
+                'message' => null,
+                'data' => $response
+            ];
         }
     }
 }

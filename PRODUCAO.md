@@ -8,7 +8,7 @@ j10117181!
 
 É necessário confirmar o email
 
-# 001 efetuar registo de utilizador na API
+# 001 efetuar registo de utilizador na API [master]
     pricing > get started > free > sign up
     validar email
     fazer login: https://www.weatherapi.com/my/
@@ -21,3 +21,9 @@ j10117181!
     copiar os dados para o thunder client e depois pegar no curl
 
     colocar o curl numa classe estática
+
+    experimentar o resultado no código PHP
+
+# 002 vamos isolar os dados de um único dia para perceber a informação que pretendemos. [01]
+    fazer os ajustamentos ao código para ver o resultado
+
