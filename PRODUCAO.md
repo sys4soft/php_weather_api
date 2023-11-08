@@ -27,3 +27,5 @@ j10117181!
 # 002 vamos isolar os dados de um único dia para perceber a informação que pretendemos. [01]
     fazer os ajustamentos ao código para ver o resultado
 
+# 003 apresentar apenas a informação que pretendemos [02]
+    fazer os ajustamentos ao código para ver o resultado apenas dos dados que pretendemos
