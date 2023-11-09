@@ -4,6 +4,9 @@ require_once 'inc/config.php';
 require_once 'inc/api.php';
 
 $city = 'Lisbon';
+if(isset($_GET['city'])) {
+    $city = $_GET['city'];
+}
 $days = 5;
 
 $results = Api::get($city, $days);
@@ -42,6 +45,13 @@ foreach($data['forecast']['forecastday'] as $day) {
     $forecast[] = $forecast_day;
 }
 
+function city_selected($city, $selected_city) {
+    if($city === $selected_city) {
+        return 'selected';
+    }
+    return '';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -58,23 +68,53 @@ foreach($data['forecast']['forecastday'] as $day) {
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
             <div class="col-10 p-5 bg-light text-black">
-                <h3>Tempo para a cidade <strong><?= $city ?></strong></h3>
-                <hr>
-                <!-- current  -->
-                <?php 
-                    $weather_info = $current;
-                    include 'inc/weather_info.php';
-                ?>
-                <!-- forecast -->
-                <?php foreach($forecast as $day) : ?>
-                    <?php 
-                        $weather_info = $day;
-                        include 'inc/weather_info.php';
-                    ?>
-                <?php endforeach; ?>
+
+                <div class="row">
+                    <div class="col-9">
+                        <h3>Tempo para a cidade <strong><?= $location['name'] ?></strong></h3>
+                        <p class="my-2">Região: <?= $location['region'] ?> | <?= $location['country'] ?> | <?= $location['current_time'] ?> | Previsão para <strong><?= $days ?></strong> dias</p>
+                    </div>
+                    <div class="col-3 text-end">
+                        <select class="form-select">
+                            <option value="Lisbon" <?= city_selected('Lisbon',$city) ?>>Lisbon</option>
+                            <option value="Madrid" <?= city_selected('Madrid',$city) ?>>Madrid</option>
+                            <option value="Paris" <?= city_selected('Paris',$city) ?>>Paris</option>
+                            <option value="London" <?= city_selected('London',$city) ?>>London</option>
+                            <option value="Berlin" <?= city_selected('Berlin',$city) ?>>Berlin</option>
+                            <option value="Brasilia" <?= city_selected('Brasilia',$city) ?>>Brasília</option>
+                            <option value="Maputo" <?= city_selected('Maputo',$city) ?>>Maputo</option>
+                            <option value="Luanda" <?= city_selected('Luanda',$city) ?>>Luanda</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <!-- current  -->
+                        <?php 
+                            $weather_info = $current;
+                            include 'inc/weather_info.php';
+                        ?>
+                        <!-- forecast -->
+                        <?php foreach($forecast as $day) : ?>
+                            <?php 
+                                $weather_info = $day;
+                                include 'inc/weather_info.php';
+                            ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const select = document.querySelector('select');
+        select.addEventListener('change', function() {
+            const city = this.value;
+            window.location.href = `index.php?city=${city}`;
+        });
+    </script>
 
 </body>
 </html>

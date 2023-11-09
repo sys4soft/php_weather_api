@@ -31,3 +31,5 @@ j10117181!
     fazer os ajustamentos ao código para ver o resultado apenas dos dados que pretendemos
 
 # 004 vamos apresentar os dados com aspeto visual mais interessante [03]
+
+# 005 vamos adicionar algumas cidades para podermos escolher [04]
